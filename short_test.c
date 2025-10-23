@@ -2,5 +2,5 @@
 
 int main(void)
 {
-	printf("%#2.5x!", 0xa);
+	printf("%d", 2147483648);
 }

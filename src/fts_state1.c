@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:12:33 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/22 19:01:22 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/23 16:57:35 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_forced_string(t_parser *parser)
 		parser->format--;
 	ft_putstr_fd("forcing string starting at: ", 1);
 	write(1, parser->format, 5);
-	ft_putchar_fd("/n");
+	ft_putchar_fd('\n', 1);
 	parser->format++;
 	while (parser->format[0] != '%')
 		parser->format++;

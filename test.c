@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 16:23:34 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/22 19:01:47 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/23 17:00:27 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int main(void)
 {
 	char	param = 0;
-	char *s1 = "%###";
+	char *s1 = "%##c";
 	int (*f1)(const char *, ...) = &ft_printf;
 	//int (*f2)(const char *, ...) = &printf;
 	f1(s1, &param);
