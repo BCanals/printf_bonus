@@ -2,5 +2,5 @@
 
 int main(void)
 {
-	printf("%d", 2147483648);
+	printf("%u", 2 * 2147483647 + 2);
 }

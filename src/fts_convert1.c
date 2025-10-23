@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:27:40 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/23 17:42:43 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/23 18:35:05 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@ void	ft_convert_p(t_parser *parser)
 
 void	ft_convert_d(t_parser *parser)
 {
-	
+	char	*num;
 	ft_putstr_fd("converting from decimal/int\n", 1);
 	ft_putchar_fd(parser->format[0], 1);
 	ft_putchar_fd(10, 1);
-	parser->wop = ft_itoa(va_arg(*(parser->args), int));
+	num = ft_itoa(va_arg(*(parser->args), int));
+	if (!num)
+		return (clean_up(parser->args));
+	parser->wop = num;
 }
