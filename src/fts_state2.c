@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:16:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/22 18:21:33 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/26 20:53:04 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_format_conver(t_parser *parser)
 	ft_putchar_fd(10, 1);
 	parser->cvt_fts_array[ft_memchr_pos("cspdiuxX%", parser->format[0], 9)]
 		(parser);
+	ft_lstadd_back(&(parser->output), ft_lstnew(parser->wop));
+	parser->wop = NULL;
 	parser->state = NEW_STRING;
 	(parser->format)++;
 }

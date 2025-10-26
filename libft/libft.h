@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 09:36:24 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/21 18:50:51 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/26 19:55:39 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 size_t	ft_strlcat(char *dest, const char *src, size_t nb);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 int		ft_atoi(const char *str);
+char	*ft_utoa_base(unsigned int n, char *base);
 void	*ft_calloc(size_t nelem, size_t elsize);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);

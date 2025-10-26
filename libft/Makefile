@@ -6,7 +6,7 @@
 #    By: becanals <becanals@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 14:27:49 by becanals          #+#    #+#              #
-#    Updated: 2025/10/21 18:51:08 by becanals         ###   ########.fr        #
+#    Updated: 2025/10/26 19:49:37 by bizcru           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS = 	ft_islower.c \
 		ft_strtrim.c \
 		ft_split.c \
 		ft_itoa.c \
+		ft_utoa_base.c \
 		ft_strmapi.c \
 		ft_striteri.c \
 		ft_putchar_fd.c \

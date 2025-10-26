@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:43:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/23 17:13:36 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/26 20:48:46 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	clean_up(t_parser *parser, va_list *args)
 			free(parser->cvt_fts_array);
 		if (parser->wop)
 			free(parser->wop);
-		if (parser->format)
-			free(parser->format);
+		//if (parser->format)
+			//free(parser->format);
 		free(parser);
 	}
 }
@@ -44,6 +44,18 @@ void	debuger(t_parser *parser)
 	ft_putchar_fd(parser->format[0], 1);
 	ft_putchar_fd(10, 1);
 	(parser->stt_fts_array)[parser->state](parser);
+}
+
+void	printer(t_parser *parser)
+{
+	t_list	*to_print;
+
+	to_print = parser->output;
+	while (to_print)
+	{
+		ft_putstr_fd(to_print->content, 1);
+		to_print = to_print->next;
+	}
 }
 
 int	ft_printf(const char *format, ...)
@@ -62,6 +74,7 @@ int	ft_printf(const char *format, ...)
 		return (-1);
 	//parser->stt_fts_array[parser->state] (parser);
 	ft_putstr_fd("++++++++++PARSING FINISHED!+++++++++\n", 1);
+	printer(parser);
 	//ft_prinit(parser->output);
 	clean_up(parser, &args);
 	return (1);
