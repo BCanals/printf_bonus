@@ -6,7 +6,7 @@
 #    By: becanals <becanals@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 14:27:49 by becanals          #+#    #+#              #
-#    Updated: 2025/10/26 19:49:37 by bizcru           ###   ########.fr        #
+#    Updated: 2025/10/27 17:50:25 by becanals         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = 	ft_islower.c \
 		ft_memrcpy.c \
 		ft_memmove.c \
 		ft_strdup.c \
+		ft_strdup_n.c \
 		ft_strndup.c \
 		ft_strchr.c \
 		ft_strrchr.c \
@@ -46,6 +47,7 @@ SRCS = 	ft_islower.c \
 		ft_split.c \
 		ft_itoa.c \
 		ft_utoa_base.c \
+		ft_ptrtoa.c \
 		ft_strmapi.c \
 		ft_striteri.c \
 		ft_putchar_fd.c \
@@ -60,6 +62,7 @@ SRCS = 	ft_islower.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
+		ft_putlst.c \
 		ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)

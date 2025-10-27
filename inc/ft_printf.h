@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:12:43 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/23 17:42:09 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/27 19:32:04 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ enum e_state
 	FORMAT_FLAG,
 	FORMAT_F_LEN,
 	FORMAT_PRECISION,
-	FORMAT_P_LEN,
 	FORMAT_CONVER
 };
 
@@ -52,7 +51,8 @@ typedef struct s_parser
 	void			(*(*cvt_fts_array))(struct s_parser *);
 	char			flag_converter;
 	char			flag_hash;
-	char			flag_spc_plus;
+	char			flag_spc_pls;
+	char			flag_min_zer;
 	size_t			flag_len;
 	char			precision;
 	size_t			prec_len;

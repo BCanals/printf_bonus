@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:27:40 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/26 20:01:12 by bizcru           ###   ########.fr       */
+/*   Updated: 2025/10/27 18:05:21 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,37 @@ void	ft_convert_c(t_parser *parser)
 void	ft_convert_s(t_parser *parser)
 {
 	char	*str;
+	char	*rtrn;
+
 	ft_putstr_fd("converting from string\n", 1);
 	ft_putchar_fd(parser->format[0], 1);
 	ft_putchar_fd(10, 1);
 	str = va_arg(*(parser->args), char *);
 	if (!str)
-		str = ft_strdup("(nil)");
-	if (!str)
+		rtrn = ft_strdup("(nil)");
+	else
+		rtrn = ft_strdup(str);
+	if (!rtrn)
 		return (clean_up(parser, parser->args));
-	parser->wop = str;
+	parser->wop = rtrn;
 }
 
 void	ft_convert_p(t_parser *parser)
 {
 	void	*ptr;
+	char	*rtrn;
+
 	ft_putstr_fd("converting from pointer\n", 1);
 	ft_putchar_fd(parser->format[0], 1);
 	ft_putchar_fd(10, 1);
 	ptr = va_arg(*(parser->args), void *);
 	if (!ptr)
-		ptr = ft_strdup("(nil)");
-	if (!ptr)
+		rtrn = ft_strdup("(nil)");
+	else
+		rtrn = ft_ptrtoa((size_t) ptr);
+	if (!rtrn)
 		return (clean_up(parser, parser->args));
-	parser->wop = ptr;
+	parser->wop = rtrn;
 }
 
 void	ft_convert_di(t_parser *parser)

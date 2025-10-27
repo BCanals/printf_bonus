@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 09:36:24 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/26 19:55:39 by bizcru           ###   ########.fr       */
+/*   Updated: 2025/10/27 17:50:06 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	*ft_memcpy(void *d, const void *s, size_t n);
 void	*ft_memrcpy(void *d, const void *s, size_t n);
 void	*ft_memmove(void *d, const void *s, size_t n);
 char	*ft_strdup(char *s);
+char	*ft_strdup_n(const char *s, size_t n);
 char	*ft_strndup(char *s, size_t n);
 char	*ft_strchr(char *s, int c);
 char	*ft_strrchr(const char *s, int c);
@@ -53,6 +54,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t nb);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 int		ft_atoi(const char *str);
 char	*ft_utoa_base(unsigned int n, char *base);
+char	*ft_ptrtoa(size_t n);
 void	*ft_calloc(size_t nelem, size_t elsize);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -73,6 +75,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_putlst(t_list *list);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

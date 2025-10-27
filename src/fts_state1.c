@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:12:33 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/23 16:57:35 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/27 20:00:21 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_new_string(t_parser *parser)
 {
-	int	i;
+	char	*str;
+	size_t	i;
 
 	ft_putstr_fd("at new string\n", 1);
 	if (parser->format[0] == 0)
@@ -32,20 +33,30 @@ void	ft_new_string(t_parser *parser)
 		i = -1;
 		while ((parser->format)[++i] && (parser->format)[i] != '%')
 			;
+		str = ft_strdup_n(parser->format, i);
+		if (!str)
+			return (clean_up(parser, parser->args));
+		ft_lstadd_back(&(parser->output), ft_lstnew(str));
 		(parser->format) += i;
 	}
 }
 
 void	ft_forced_string(t_parser *parser)
 {
+	int		i;
+	char	*str;
+
 	while (parser->format[0] != '%')
 		parser->format--;
-	ft_putstr_fd("forcing string starting at: ", 1);
-	write(1, parser->format, 5);
-	ft_putchar_fd('\n', 1);
-	parser->format++;
-	while (parser->format[0] != '%')
-		parser->format++;
+	ft_putstr_fd("forcing string\n", 1);
+	i = 0;
+	while (parser->format[++i] && parser->format[i] != '%')
+		;
+	str = ft_strdup_n(parser->format, i);
+	if (!str)
+		return (clean_up(parser, parser->args));
+	ft_lstadd_back(&(parser->output), ft_lstnew(str));
+	(parser->format) += i;
 	parser->state = NEW_STRING;
 }
 
@@ -58,6 +69,16 @@ void	ft_format_flag(t_parser *parser)
 		ft_putchar_fd(parser->format[0], 1);
 		ft_putchar_fd(10, 1);
 		parser->format++;
+		if (parser->format[0] == '#')
+			parser->flag_hash = 1;
+		else if (parser->format[0] == ' ' && !parser->flag_spc_pls)
+			parser->flag_spc_pls = 1;
+		else if (parser->format[0] == '+')
+			parser->flag_spc_pls = 2;
+		else if (parser->format[0] ==  '0' && !parser->flag_min_zer)
+			parser->flag_min_zer = 1;
+		else if (parser->format[0] == '-')
+			parser->flag_min_zer = 2;
 		return ;
 	}
 	parser->state = FORMAT_F_LEN;
@@ -81,9 +102,15 @@ void	ft_format_precision(t_parser *parser)
 	if (parser->format[0] == '.')
 	{
 		ft_putstr_fd("precision: yes\n", 1);
+		parser->precision = 1;
 		parser->format++;
-		while (ft_isdigit(parser->format[0]))
-			parser->format++;
+		if (ft_isdigit(parser->format[0]))
+		{
+			//falta gestionar pel cas mes gran que int amb un my_ft_atoi
+			parser->prec_len = ft_atoi(parser->format);
+			while (ft_isdigit(parser->format[0]))
+				parser->format++;
+		}
 	}
-	parser->state = FORMAT_P_LEN;
+	parser->state = FORMAT_CONVER;
 }

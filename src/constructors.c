@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:01:10 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/26 20:00:30 by bizcru           ###   ########.fr       */
+/*   Updated: 2025/10/27 19:41:26 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static void	stt_fts_constr(void (*(*array))(t_parser *))
 	array[3] = &ft_format_flag;
 	array[4] = &ft_format_f_len;
 	array[5] = &ft_format_precision;
-	array[6] = &ft_format_p_len;
-	array[7] = &ft_format_conver;
+	array[6] = &ft_format_conver;
 }
 
 static void	cvt_fts_constr(void (*(*array))(t_parser *))
@@ -29,10 +28,11 @@ static void	cvt_fts_constr(void (*(*array))(t_parser *))
 	array[1] = ft_convert_s;
 	array[2] = ft_convert_p;
 	array[3] = ft_convert_di;
-	array[4] = ft_convert_u;
-	array[5] = ft_convert_xl;
-	array[6] = ft_convert_xu;
-	array[7] = ft_convert_percent;
+	array[4] = ft_convert_di;
+	array[5] = ft_convert_u;
+	array[6] = ft_convert_xl;
+	array[7] = ft_convert_xu;
+	array[8] = ft_convert_percent;
 }
 
 t_parser	*parser_constr(const char *format, va_list *args)
@@ -45,8 +45,8 @@ t_parser	*parser_constr(const char *format, va_list *args)
 	parser->format = format;
 	parser->args = args;
 	parser->state = NEW_STRING;
-	parser->stt_fts_array = ft_calloc(sizeof(void (*)(t_parser *)), 8);
-	parser->cvt_fts_array = ft_calloc(sizeof(void (*)(t_parser *)), 8);
+	parser->stt_fts_array = ft_calloc(sizeof(void (*)(t_parser *)), 7);
+	parser->cvt_fts_array = ft_calloc(sizeof(void (*)(t_parser *)), 9);
 	if (!(parser->stt_fts_array) || !(parser->cvt_fts_array))
 	{
 		clean_up(parser, args);

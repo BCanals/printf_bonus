@@ -6,22 +6,21 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:16:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/26 20:53:04 by bizcru           ###   ########.fr       */
+/*   Updated: 2025/10/27 19:58:25 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-void	ft_format_p_len(t_parser *parser)
+static void	ft_reset_flags(t_parser *parser)
 {
-	if (ft_isdigit(parser->format[0]))
-	{
-		//falta gestionar pel cas mes gran que int amb un my_ft_atoi
-		parser->prec_len = ft_atoi(parser->format);
-		while (ft_isdigit(parser->format[0]))
-			parser->format++;
-	}
-	parser->state = FORMAT_CONVER;
+	parser->flag_converter = 0;
+	parser->flag_hash = 0;
+	parser->flag_spc_pls = 0;
+	parser->flag_min_zer = 0;
+	parser->flag_len = 0;
+	parser->precision = 0;
+	parser->prec_len = 0;
 }
 
 void	ft_format_conver(t_parser *parser)
@@ -32,11 +31,21 @@ void	ft_format_conver(t_parser *parser)
 	ft_putstr_fd("Position: ", 1);
 	ft_putnbr_fd(ft_memchr_pos("cspdiuxX%", parser->format[0], 9), 1);
 	ft_putchar_fd(10, 1);
+	
+	if (ft_memchr_pos("cspdiuxX", parser->format[0], 8) == -1)
+	{
+		ft_reset_flags(parser);
+		parser->state = FORCED_STRING;
+		return ;
+	}
 	parser->cvt_fts_array[ft_memchr_pos("cspdiuxX%", parser->format[0], 9)]
 		(parser);
+	parser->flag_converter = parser->format[0];
+	//aqui va l'expansio de la cadena, en lloc d'aquesta linia
 	ft_lstadd_back(&(parser->output), ft_lstnew(parser->wop));
 	parser->wop = NULL;
 	parser->state = NEW_STRING;
+	ft_reset_flags(parser);
 	(parser->format)++;
 }
 /*
