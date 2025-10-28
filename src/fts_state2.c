@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:16:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/27 19:58:25 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/28 10:47:19 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ static void	ft_reset_flags(t_parser *parser)
 	parser->flag_len = 0;
 	parser->precision = 0;
 	parser->prec_len = 0;
+	parser->wop = NULL;
+}
+
+static void	ft_expansion(t_parser *parser)
+{
+	
 }
 
 void	ft_format_conver(t_parser *parser)
@@ -43,9 +49,8 @@ void	ft_format_conver(t_parser *parser)
 	parser->flag_converter = parser->format[0];
 	//aqui va l'expansio de la cadena, en lloc d'aquesta linia
 	ft_lstadd_back(&(parser->output), ft_lstnew(parser->wop));
-	parser->wop = NULL;
-	parser->state = NEW_STRING;
 	ft_reset_flags(parser);
+	parser->state = NEW_STRING;
 	(parser->format)++;
 }
 /*
