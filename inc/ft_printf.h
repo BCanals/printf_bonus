@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:12:43 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/27 19:32:04 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:24:00 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_parser
 {
 	const char		*format;
 	va_list			*args;
-	void			*wop;
+	char			*wop;
 	t_list			*output;
 	enum e_state	state;
 	void			(*(*stt_fts_array))(struct s_parser *);
@@ -52,7 +52,7 @@ typedef struct s_parser
 	char			flag_converter;
 	char			flag_hash;
 	char			flag_spc_pls;
-	char			flag_min_zer;
+	char			flag_zer_min;
 	size_t			flag_len;
 	char			precision;
 	size_t			prec_len;
@@ -61,6 +61,7 @@ typedef struct s_parser
 int			ft_printf(const char *format, ...);
 t_parser	*parser_constr(const char *format, va_list *args);
 void		clean_up(t_parser *parser, va_list *args);
+void		ft_clean_up(t_parser *parser);
 void		ft_new_string(t_parser *parser);
 void		ft_forced_string(t_parser *parser);
 void		ft_format_flag(t_parser *parser);
@@ -76,5 +77,7 @@ void		ft_convert_u(t_parser *parser);
 void		ft_convert_xl(t_parser *parser);
 void		ft_convert_xu(t_parser *parser);
 void		ft_convert_percent(t_parser *parser);
+int			ft_expansion(t_parser *parser);
+int			ft_expand_buff(t_parser *parser);
 
 #endif

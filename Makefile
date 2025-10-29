@@ -6,7 +6,7 @@
 #    By: becanals <becanals@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 14:27:49 by becanals          #+#    #+#              #
-#    Updated: 2025/10/20 18:24:34 by becanals         ###   ########.fr        #
+#    Updated: 2025/10/29 17:51:48 by becanals         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ SRC_FLS =	main.c \
 			fts_state1.c \
 			fts_state2.c \
 			fts_convert1.c \
-			fts_convert2.c
+			fts_convert2.c \
+			expansion1.c \
+			expansion2.c
 SRC_DIR = src
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FLS))
 

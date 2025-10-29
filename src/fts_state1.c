@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:12:33 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/27 20:00:21 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:19:49 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ void	ft_format_flag(t_parser *parser)
 			parser->flag_spc_pls = 1;
 		else if (parser->format[0] == '+')
 			parser->flag_spc_pls = 2;
-		else if (parser->format[0] ==  '0' && !parser->flag_min_zer)
-			parser->flag_min_zer = 1;
+		else if (parser->format[0] ==  '0' && !parser->flag_zer_min)
+			parser->flag_zer_min = 1;
 		else if (parser->format[0] == '-')
-			parser->flag_min_zer = 2;
+			parser->flag_zer_min = 2;
 		return ;
 	}
 	parser->state = FORMAT_F_LEN;
@@ -103,6 +103,8 @@ void	ft_format_precision(t_parser *parser)
 	{
 		ft_putstr_fd("precision: yes\n", 1);
 		parser->precision = 1;
+		if (parser->flag_zer_min == 1)
+			parser->flag_zer_min = 0;
 		parser->format++;
 		if (ft_isdigit(parser->format[0]))
 		{
