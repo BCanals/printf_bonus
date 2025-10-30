@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:16:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/29 19:19:41 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:07:58 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	ft_format_conver(t_parser *parser)
 		(parser);
 	parser->flag_converter = parser->format[0];
 	if (!ft_expansion(parser))
-		return (parser->state = FINISH, (void)0);
+		return (parser->kill = 1, (void)0);
 	new = ft_lstnew(parser->wop);
 	if (!new)
-		return (parser->state = FINISH, ft_clean_up(parser));
+		return (parser->kill = 1, (void)0);
 	ft_lstadd_back(&(parser->output), new);
 	ft_const_printer(parser);
 	ft_reset_flags(parser);

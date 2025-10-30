@@ -6,7 +6,7 @@
 #    By: becanals <becanals@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 14:27:49 by becanals          #+#    #+#              #
-#    Updated: 2025/10/27 17:50:25 by becanals         ###   ########.fr        #
+#    Updated: 2025/10/30 19:33:01 by becanals         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS = 	ft_islower.c \
 		ft_strlcat.c \
 		ft_strlcpy.c \
 		ft_atoi.c \
+		ft_atou.c \
 		ft_calloc.c \
 		ft_substr.c \
 		ft_strjoin.c \

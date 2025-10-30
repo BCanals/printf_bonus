@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:12:33 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/30 16:24:41 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:33:26 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ void	ft_new_string(t_parser *parser)
 {
 	char	*str;
 	size_t	i;
+	t_list	*new;
 
-	//ft_putstr_fd("at new string\n", 1);
 	if (parser->format[0] == 0)
-	{
-	//	ft_putstr_fd("nothing to be done here\n", 1);
 		parser->state = FINISH;
-	}
 	else if ((parser->format)[0] == '%')
 	{
 		parser->format++;
@@ -35,8 +32,11 @@ void	ft_new_string(t_parser *parser)
 			;
 		str = ft_strdup_n(parser->format, i);
 		if (!str)
-			return (clean_up(parser, parser->args));
-		ft_lstadd_back(&(parser->output), ft_lstnew(str));
+			return (parser->kill = 1, (void)0);
+		new = ft_lstnew(str);
+		if (!new)
+			return (parser->kill = 1, (void)0);
+		ft_lstadd_back(&(parser->output), new);
 		(parser->format) += i;
 	}
 }
@@ -45,17 +45,20 @@ void	ft_forced_string(t_parser *parser)
 {
 	int		i;
 	char	*str;
+	t_list	*new;
 
 	while (parser->format[0] != '%')
 		parser->format--;
-	//ft_putstr_fd("forcing string\n", 1);
 	i = 0;
 	while (parser->format[++i] && parser->format[i] != '%')
 		;
 	str = ft_strdup_n(parser->format, i);
 	if (!str)
-		return (clean_up(parser, parser->args));
-	ft_lstadd_back(&(parser->output), ft_lstnew(str));
+		return (parser->kill = 1, (void)0);
+	new = ft_lstnew(str);
+	if (!new)
+		return (parser->kill = 1, (void)0);
+	ft_lstadd_back(&(parser->output), new);
 	(parser->format) += i;
 	parser->state = NEW_STRING;
 }
@@ -95,8 +98,9 @@ void	ft_format_f_len(t_parser *parser)
 	//ft_putstr_fd("\n", 1);
 	if (ft_isdigit(parser->format[0]))
 	{
-		//falta gestionar pel cas mes gran que int amb un my_ft_atoi
-		parser->flag_len = ft_atoi(parser->format);
+		parser->flag_len = ft_atou(parser->format);
+		if (parser->flag_len > 2147483647)
+			return (parser->kill = 1, (void)0);
 		while (ft_isdigit(parser->format[0]))
 			parser->format++;
 	}
@@ -116,8 +120,9 @@ void	ft_format_precision(t_parser *parser)
 		parser->format++;
 		if (ft_isdigit(parser->format[0]))
 		{
-			//falta gestionar pel cas mes gran que int amb un my_ft_atoi
-			parser->prec_len = ft_atoi(parser->format);
+			parser->prec_len = ft_atou(parser->format);
+			if (parser->prec_len > 2147483647)
+				return (parser->kill = 1, (void)0);
 			while (ft_isdigit(parser->format[0]))
 				parser->format++;
 		}

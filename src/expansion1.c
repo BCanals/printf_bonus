@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 18:02:27 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/30 17:31:54 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:20:07 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_app_zeros(t_parser *parser)
 	{
 		str = ft_calloc(num_len + 1, 1);
 		if (!str)
-			return (ft_clean_up(parser), 0);
+			return (parser->kill = 1, 0);
 		ft_memset(str, '0', num_len);
 		zero_len = num_len - ft_strlen(parser->wop) - 1;
 		ft_memcpy(&(str[zero_len + 1]), parser->wop, ft_strlen(parser->wop));
@@ -51,7 +51,7 @@ static int	ft_app_hash(t_parser *parser)
 		else
 			str = ft_calloc(ft_strlen(parser->wop) + 3, 1);
 		if (!str)
-			return (ft_clean_up(parser), 0);
+			return (parser->kill = 1, 0);
 		if (dif == 1 && parser -> wop[0] == '0')
 			ft_memcpy(&str[1], parser->wop, ft_strlen(parser->wop));
 		else
@@ -73,7 +73,7 @@ static int	ft_app_spc_pls(t_parser *parser)
 	{
 		str = ft_calloc(ft_strlen(parser->wop) + 2, 1);
 		if (!str)
-			return (ft_clean_up(parser), 0);
+			return (parser->kill = 1, 0);
 		ft_memcpy(&(str[1]), parser->wop, ft_strlen(parser->wop));
 		free(parser->wop);
 		parser->wop = str;
@@ -94,7 +94,7 @@ static int	ft_shorten_str(t_parser *parser)
 	{
 		str = ft_strdup_n(parser->wop, parser->prec_len);
 		if (!str)
-			return (ft_clean_up(parser), 0);
+			return (parser->kill = 1, 0);
 		free(parser->wop);
 		parser->wop = str;
 	}
@@ -107,19 +107,19 @@ int	ft_expansion(t_parser *parser)
 	if (ft_memchr("diuxX", parser->flag_converter, 5))
 	{
 		if (!ft_app_zeros(parser))
-			return (ft_clean_up(parser), 0);
+			return (parser->kill = 1, 0);
 		if (ft_memchr("xX", parser->flag_converter, 2) && parser->flag_hash)
 			if (!ft_app_hash(parser))
-				return (ft_clean_up(parser), 0);
+				return (parser->kill = 1, 0);
 		if (ft_memchr("di", parser->flag_converter, 3) && parser->flag_spc_pls)
 			if (!ft_app_spc_pls(parser))
-				return (ft_clean_up(parser), 0);
+				return (parser->kill = 1, 0);
 	}
 	else if (parser->flag_converter == 's' && parser->precision)
 		if (!ft_shorten_str(parser))
-			return (ft_clean_up(parser), 0);
+			return (parser->kill = 1, 0);
 	if (ft_memchr("cspdiuxX", parser->flag_converter, 8) && parser->flag_len)
 		if (!ft_expand_buff(parser))
-			return (ft_clean_up(parser), 0);
+			return (parser->kill = 1, 0);
 	return (1);
 }

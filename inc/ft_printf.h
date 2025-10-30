@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:12:43 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/29 19:06:51 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:12:46 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,12 @@ typedef struct s_parser
 	size_t			flag_len;
 	char			precision;
 	size_t			prec_len;
+	char			kill;
 }				t_parser;
 
 void		ft_const_printer(t_parser *parser);
 int			ft_printf(const char *format, ...);
 t_parser	*parser_constr(const char *format, va_list *args);
-void		clean_up(t_parser *parser, va_list *args);
-void		ft_clean_up(t_parser *parser);
 void		ft_new_string(t_parser *parser);
 void		ft_forced_string(t_parser *parser);
 void		ft_format_flag(t_parser *parser);

@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 17:50:21 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/30 16:28:57 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:20:31 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_expand_buff(t_parser *parser)
 	{
 		str = ft_calloc(parser->flag_len + 1, 1);
 		if (!str)
-			return (ft_clean_up(parser), 0);
+			return (parser->kill = 1, 0);
 		ft_memset(str, ' ', parser->flag_len);
 		if (parser->flag_zer_min == 2)
 			ft_memcpy(str, parser->wop, ft_strlen(parser->wop));

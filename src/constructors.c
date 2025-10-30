@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:01:10 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/27 19:41:26 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:16:05 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ t_parser	*parser_constr(const char *format, va_list *args)
 	parser->stt_fts_array = ft_calloc(sizeof(void (*)(t_parser *)), 7);
 	parser->cvt_fts_array = ft_calloc(sizeof(void (*)(t_parser *)), 9);
 	if (!(parser->stt_fts_array) || !(parser->cvt_fts_array))
-	{
-		clean_up(parser, args);
-		return (NULL);
-	}
+		return (parser->kill = 1, NULL);
 	stt_fts_constr(parser->stt_fts_array);
 	cvt_fts_constr(parser->cvt_fts_array);
 	return (parser);

@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:43:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/30 16:25:44 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:16:21 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	my_free(void *del)
 	free(del);
 }
 
-void	ft_clean_up(t_parser *parser)
+static void	ft_clean_up(t_parser *parser)
 {
 	if (parser)
 	{
@@ -33,23 +33,7 @@ void	ft_clean_up(t_parser *parser)
 			free(parser->cvt_fts_array);
 		if (parser->wop)
 			free(parser->wop);
-		free(parser);
-	}
-}
-
-void	clean_up(t_parser *parser, va_list *args)
-{
-	va_end(*args);
-	if (parser)
-	{
-		if (parser->output)
-			ft_lstclear(&(parser->output), &my_free);
-		if (parser->stt_fts_array)
-			free(parser->stt_fts_array);
-		if (parser->cvt_fts_array)
-			free(parser->cvt_fts_array);
-		if (parser->wop)
-			free(parser->wop);
+		ft_memset(parser, 0, sizeof(t_parser));
 		free(parser);
 	}
 }
@@ -93,18 +77,14 @@ int	ft_printf(const char *format, ...)
 
 	va_start(args, format);
 	parser = parser_constr(format, &args);
-	if (!parser)
-		return (clean_up(parser, &args), -1);
-	//ft_putstr_fd("++++++++++PARSING, START!+++++++++++\n", 1);
-	while (parser && parser->state)
+	if (!parser || parser->kill)
+		return (va_end(args), -1);
+	while (parser->state && !(parser->kill))
 		(parser->stt_fts_array)[parser->state](parser);
-	//debuger(parser);
-	if (!parser)
-		return (-1);
-	//parser->stt_fts_array[parser->state] (parser);
+	if (parser->kill)
+		return (ft_clean_up(parser), -1);
 	ft_putstr_fd("\n++++++++++PARSING FINISHED!+++++++++\n", 1);
 	ft_putlst(parser->output);
-	//ft_prinit(parser->output);
-	clean_up(parser, &args);
+	ft_clean_up(parser);
 	return (1);
 }

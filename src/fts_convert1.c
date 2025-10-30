@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:27:40 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/29 18:50:43 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:09:49 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_convert_c(t_parser *parser)
 
 	c = ft_calloc(2, 1);
 	if (!c)
-		return (clean_up(parser, parser->args));
+		return (parser->kill = 1, (void)0);
 	c[0] = va_arg(*(parser->args), int);
 	parser->wop = c;
 }
@@ -41,7 +41,7 @@ void	ft_convert_s(t_parser *parser)
 	else
 		rtrn = ft_strdup(str);
 	if (!rtrn)
-		return (clean_up(parser, parser->args));
+		return (parser->kill = 1, (void)0);
 	parser->wop = rtrn;
 }
 
@@ -59,7 +59,7 @@ void	ft_convert_p(t_parser *parser)
 	else
 		rtrn = ft_ptrtoa((size_t) ptr);
 	if (!rtrn)
-		return (clean_up(parser, parser->args));
+		return (parser->kill = 1, (void)0);
 	parser->wop = rtrn;
 }
 
@@ -71,6 +71,6 @@ void	ft_convert_di(t_parser *parser)
 	//ft_putchar_fd(10, 1);
 	num = ft_itoa(va_arg(*(parser->args), int));
 	if (!num)
-		return (clean_up(parser, parser->args));
+		return (parser->kill = 1, (void)0);
 	parser->wop = num;
 }
