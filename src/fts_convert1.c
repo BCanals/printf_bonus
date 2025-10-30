@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:27:40 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/27 18:05:21 by becanals         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:50:43 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_convert_c(t_parser *parser)
 {
 	char	*c;
 
-	ft_putstr_fd("converting from char\n", 1);
-	ft_putchar_fd(parser->format[0], 1);
-	ft_putchar_fd(10, 1);
+	//ft_putstr_fd("converting from char\n", 1);
+	//ft_putchar_fd(parser->format[0], 1);
+	//ft_putchar_fd(10, 1);
 
 	c = ft_calloc(2, 1);
 	if (!c)
@@ -32,9 +32,9 @@ void	ft_convert_s(t_parser *parser)
 	char	*str;
 	char	*rtrn;
 
-	ft_putstr_fd("converting from string\n", 1);
-	ft_putchar_fd(parser->format[0], 1);
-	ft_putchar_fd(10, 1);
+	//ft_putstr_fd("converting from string\n", 1);
+	//ft_putchar_fd(parser->format[0], 1);
+	//ft_putchar_fd(10, 1);
 	str = va_arg(*(parser->args), char *);
 	if (!str)
 		rtrn = ft_strdup("(nil)");
@@ -50,9 +50,9 @@ void	ft_convert_p(t_parser *parser)
 	void	*ptr;
 	char	*rtrn;
 
-	ft_putstr_fd("converting from pointer\n", 1);
-	ft_putchar_fd(parser->format[0], 1);
-	ft_putchar_fd(10, 1);
+	//ft_putstr_fd("converting from pointer\n", 1);
+	//ft_putchar_fd(parser->format[0], 1);
+	//ft_putchar_fd(10, 1);
 	ptr = va_arg(*(parser->args), void *);
 	if (!ptr)
 		rtrn = ft_strdup("(nil)");
@@ -66,9 +66,9 @@ void	ft_convert_p(t_parser *parser)
 void	ft_convert_di(t_parser *parser)
 {
 	char	*num;
-	ft_putstr_fd("converting from decimal/int\n", 1);
-	ft_putchar_fd(parser->format[0], 1);
-	ft_putchar_fd(10, 1);
+	//ft_putstr_fd("converting from decimal/int\n", 1);
+	//ft_putchar_fd(parser->format[0], 1);
+	//ft_putchar_fd(10, 1);
 	num = ft_itoa(va_arg(*(parser->args), int));
 	if (!num)
 		return (clean_up(parser, parser->args));
