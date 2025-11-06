@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:12:33 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/30 19:33:26 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:42:21 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ void	ft_format_flag(t_parser *parser)
 		//ft_putchar_fd(10, 1);
 		if (parser->format[0] == '#')
 			parser->flag_hash = 1;
-		else if (parser->format[0] == ' ' && !parser->flag_spc_pls)
-			parser->flag_spc_pls = 1;
-		else if (parser->format[0] == '+')
-			parser->flag_spc_pls = 2;
+		else if (parser->format[0] == ' ' && !parser->flag_sign && parser->flag_sign != 3)
+			parser->flag_sign = 1;
+		else if (parser->format[0] == '+' && parser->flag_sign != 3)
+			parser->flag_sign = 2;
 		else if (parser->format[0] ==  '0' && !parser->flag_zer_min)
 			parser->flag_zer_min = 1;
 		else if (parser->format[0] == '-')

@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 16:23:34 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/02 22:11:55 by bizcru           ###   ########.fr       */
+/*   Updated: 2025/11/06 18:55:26 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,22 +206,253 @@ int main(int argc, char **argv)
 
 		ft_printf("%010.20d!\n", -1234);
 		printf("%010.20d!\n", -1234);
+
+		ft_putstr_fd("bloc 3:\n", 1);
+		ft_printf("%-d!\n", 0);
+		printf("%-d!\n", 0);
+
+		ft_printf("%0-d!\n", -2147483648);
+		printf("%0-d!\n", -2147483648);
+
+		ft_printf("%0-d!\n", 2147483648);
+		printf("%0-d!\n", 2147483648);
+
+		ft_printf("%0-d!\n", 0xFFffFFff);
+		printf("%0-d!\n", 0xFFffFFff);
+
+		ft_printf("%0-20d!\n", 123456789);
+		printf("%0-20d!\n", 123456789);
+
+		ft_printf("%-02d!\n", 123456789);
+		printf("%-02d!\n", 123456789);
+
+		ft_printf("%-020d!\n", -123456789);
+		printf("%-020d!\n", -123456789);
+
+		ft_printf("%-02d!\n", -123456789);
+		printf("%-02d!\n", -123456789);
+
+		ft_printf("%-0.20d!\n", 0);
+		printf("%-0.20d!\n", 0);
+
+		ft_printf("%-020.10d!\n", 0);
+		printf("%-020.10d!\n", 0);
+
+		ft_printf("%-010.20d!\n", 0);
+		printf("%-010.20d!\n", 0);
+
+		ft_printf("%-010d!\n", -1234);
+		printf("%-010d!\n", -1234);
+
+		ft_printf("%-0.20d!\n", -1234);
+		printf("%-0.20d!\n", -1234);
+
+		ft_printf("%-020.10d!\n", -1234);
+		printf("%-020.10d!\n", -1234);
+
+		ft_printf("%-010.20d!\n", -1234);
+		printf("%-010.20d!\n", -1234);
 	}
 	if (argc == 1 || ft_memchr(argv[1], 'u', ft_strlen(argv[1])))
 	{
+		ft_putstr_fd("bloc 1:\n", 1);
+		ft_printf("%0u!\n", 0);
+		printf("%0u!\n", 0);
+
+		ft_printf("%0u!\n", -2147483648);
+		printf("%0u!\n", -2147483648);
+
+		ft_printf("%0u!\n", 2147483648);
+		printf("%0u!\n", 2147483648);
+
+		ft_printf("%0u!\n", 0xFFffFFff);
+		printf("%0u!\n", 0xFFffFFff);
+
+		ft_printf("%020u!\n", 123456789);
+		printf("%020u!\n", 123456789);
+
+		ft_printf("%02u!\n", 123456789);
+		printf("%02u!\n", 123456789);
+
+		ft_printf("%020u!\n", -123456789);
+		printf("%020u!\n", -123456789);
+
+		ft_printf("%02u!\n", -123456789);
+		printf("%02u!\n", -123456789);
+
+		ft_printf("%0.20u!\n", 0);
+		printf("%0.20u!\n", 0);
+
+		ft_printf("%020.10u!\n", 0);
+		printf("%020.10u!\n", 0);
+
+		ft_printf("%010.20u!\n", 0);
+		printf("%010.20u!\n", 0);
+
+		ft_printf("%010u!\n", -1234);
+		printf("%010u!\n", -1234);
+
+		ft_printf("%0.20u!\n", -1234);
+		printf("%0.20u!\n", -1234);
+
+		ft_printf("%020.10u!\n", -1234);
+		printf("%020.10u!\n", -1234);
+
+		ft_printf("%010.20u!\n", -1234);
+		printf("%010.20u!\n", -1234);
+		
+		ft_printf("%0u!\n", 0x100000000);
+		printf("%0u!\n", 0x100000000);
+		
+		ft_printf("%0u!\n", 0x100000001);
+		printf("%0u!\n", 0x100000001);
 	}
 	if (argc == 1 || ft_memchr(argv[1], 'x', ft_strlen(argv[1])))
 	{
+		ft_printf("%x!\n", 0x600);
+		printf("%x!\n", 0x600);
+
 		ft_printf("%74x!\n", 0x600);
 		printf("%74x!\n", 0x600);
+
+		ft_printf("%.74x!\n", 0x600);
+		printf("%.74x!\n", 0x600);
+
+		ft_printf("%10.24x!\n", 0x600);
+		printf("%10.24x!\n", 0x600);
+		
+		ft_printf("%#x!\n", 0x600);
+		printf("%#x!\n", 0x600);
+
+		ft_printf("%#74x!\n", 0x600);
+		printf("%#74x!\n", 0x600);
 
 		ft_printf("%#.74x!\n", 0x600);
 		printf("%#.74x!\n", 0x600);
 
 		ft_printf("%#10.24x!\n", 0x600);
 		printf("%#10.24x!\n", 0x600);
+		
+		ft_printf("%0x!\n", 0x600);
+		printf("%0x!\n", 0x600);
+
+		ft_printf("%074x!\n", 0x600);
+		printf("%074x!\n", 0x600);
+
+		ft_printf("%0.74x!\n", 0x600);
+		printf("%0.74x!\n", 0x600);
+
+		ft_printf("%010.24x!\n", 0x600);
+		printf("%010.24x!\n", 0x600);
+		
+		ft_printf("%0#x!\n", 0x600);
+		printf("%0#x!\n", 0x600);
+
+		ft_printf("%0#74x!\n", 0x600);
+		printf("%0#74x!\n", 0x600);
+
+		ft_printf("%0#.74x!\n", 0x600);
+		printf("%0#.74x!\n", 0x600);
+
+		ft_printf("%0#10.24x!\n", 0x600);
+		printf("%0#10.24x!\n", 0x600);
+		
+		ft_printf("%-x!\n", 0x600);
+		printf("%-x!\n", 0x600);
+
+		ft_printf("%-74x!\n", 0x600);
+		printf("%-74x!\n", 0x600);
+
+		ft_printf("%-.74x!\n", 0x600);
+		printf("%-.74x!\n", 0x600);
+
+		ft_printf("%-10.24x!\n", 0x600);
+		printf("%-10.24x!\n", 0x600);
+		
+		ft_printf("%-#x!\n", 0x600);
+		printf("%-#x!\n", 0x600);
+
+		ft_printf("%-#74x!\n", 0x600);
+		printf("%-#74x!\n", 0x600);
+
+		ft_printf("%-#.74x!\n", 0x600);
+		printf("%-#.74x!\n", 0x600);
+
+		ft_printf("%-#10.24x!\n", 0xFFFFFFFFFFFF);
+		printf("%-#10.24x!\n", 0xFFFFFFFFFFFF);
 	}
 	if (argc == 1 || ft_memchr(argv[1], 'X', ft_strlen(argv[1])))
 	{
+		ft_printf("%X!\n", 0x600);
+		printf("%X!\n", 0x600);
+
+		ft_printf("%74X!\n", 0x600);
+		printf("%74X!\n", 0x600);
+
+		ft_printf("%.74X!\n", 0x600);
+		printf("%.74X!\n", 0x600);
+
+		ft_printf("%10.24X!\n", 0x600);
+		printf("%10.24X!\n", 0x600);
+		
+		ft_printf("%#X!\n", 0x600);
+		printf("%#X!\n", 0x600);
+
+		ft_printf("%#74X!\n", 0x600);
+		printf("%#74X!\n", 0x600);
+
+		ft_printf("%#.74X!\n", 0x600);
+		printf("%#.74X!\n", 0x600);
+
+		ft_printf("%#10.24X!\n", 0x600);
+		printf("%#10.24X!\n", 0x600);
+		
+		ft_printf("%0X!\n", 0x600);
+		printf("%0X!\n", 0x600);
+
+		ft_printf("%074X!\n", 0x600);
+		printf("%074X!\n", 0x600);
+
+		ft_printf("%0.74X!\n", 0x600);
+		printf("%0.74X!\n", 0x600);
+
+		ft_printf("%010.24X!\n", 0x600);
+		printf("%010.24X!\n", 0x600);
+		
+		ft_printf("%0#X!\n", 0x600);
+		printf("%0#X!\n", 0x600);
+
+		ft_printf("%0#74X!\n", 0x600);
+		printf("%0#74X!\n", 0x600);
+
+		ft_printf("%0#.74X!\n", 0x600);
+		printf("%0#.74X!\n", 0x600);
+
+		ft_printf("%0#10.24X!\n", 0x600);
+		printf("%0#10.24X!\n", 0x600);
+		
+		ft_printf("%-X!\n", 0x600);
+		printf("%-X!\n", 0x600);
+
+		ft_printf("%-74X!\n", 0x600);
+		printf("%-74X!\n", 0x600);
+
+		ft_printf("%-.74X!\n", 0x600);
+		printf("%-.74X!\n", 0x600);
+
+		ft_printf("%-10.24X!\n", 0x600);
+		printf("%-10.24X!\n", 0x600);
+		
+		ft_printf("%-#X!\n", 0x600);
+		printf("%-#X!\n", 0x600);
+
+		ft_printf("%-#74X!\n", 0x600);
+		printf("%-#74X!\n", 0x600);
+
+		ft_printf("%-#.74X!\n", 0x600);
+		printf("%-#.74X!\n", 0x600);
+
+		ft_printf("%-#10.24X!\n", 0xFFFFFFFFFFFF);
+		printf("%-#10.24X!\n", 0xFFFFFFFFFFFF);
 	}
 }

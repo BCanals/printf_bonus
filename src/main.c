@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:43:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/02 17:17:47 by bizcru           ###   ########.fr       */
+/*   Updated: 2025/11/06 17:41:19 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	ft_const_printer(t_parser *parser)
 	ft_putchar_fd(parser->flag_converter, 1);
 	ft_putstr_fd("\nflag hash: ", 1);
 	ft_putchar_fd(parser->flag_hash + '0', 1);
-	ft_putstr_fd("\nflag spc_pls: ", 1);
-	ft_putchar_fd(parser->flag_spc_pls + '0', 1);
+	ft_putstr_fd("\nflag sign: ", 1);
+	ft_putchar_fd(parser->flag_sign + '0', 1);
 	ft_putstr_fd("\nflag zer_min: ", 1);
 	ft_putchar_fd(parser->flag_zer_min + '0', 1);
 	ft_putstr_fd("\nflag len: ", 1);

@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 18:02:27 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/02 22:17:26 by bizcru           ###   ########.fr       */
+/*   Updated: 2025/11/06 18:24:35 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ static int	ft_app_hash(t_parser *parser)
 	}
 	(parser->wop)[0] = '0';
 	(parser->wop)[1] = 'x';
-	//ft_putstr_fd(parser->wop, 1);
 	return (1);
 }
 
-static int	ft_app_spc_pls(t_parser *parser)
+static int	ft_app_sign(t_parser *parser)
 {
 	char	*str;
 
-	if (ft_strlen(parser->wop) >= parser->prec_len)
+	if ((parser->precision && ft_strlen(parser->wop) >= parser->prec_len) ||
+	 (parser->wop)[0] != '0')
 	{
 		str = ft_calloc(ft_strlen(parser->wop) + 2, 1);
 		if (!str)
@@ -77,11 +77,12 @@ static int	ft_app_spc_pls(t_parser *parser)
 		free(parser->wop);
 		parser->wop = str;
 	}
-	if (parser->flag_spc_pls == 1)
+	if (parser->flag_sign == 1)
 		(parser->wop)[0] = ' ';
-	else
+	else if (parser->flag_sign == 2)
 		(parser->wop)[0] = '+';
-	//ft_putstr_fd(parser->wop, 1);
+	else
+		(parser->wop)[0] = '-';
 	return (1);
 }
 
@@ -111,8 +112,8 @@ int	ft_expansion(t_parser *parser)
 		if (ft_memchr("xX", parser->flag_converter, 2) && parser->flag_hash)
 			if (!ft_app_hash(parser))
 				return (parser->kill = 1, 0);
-		if (ft_memchr("di", parser->flag_converter, 3) && parser->flag_spc_pls)
-			if (!ft_app_spc_pls(parser))
+		if (ft_memchr("di", parser->flag_converter, 3) && parser->flag_sign)
+			if (!ft_app_sign(parser))
 				return (parser->kill = 1, 0);
 	}
 	else if (parser->flag_converter == 's' && parser->precision)
