@@ -6,7 +6,7 @@
 /*   By: bcanals- <bcanals-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 15:59:46 by bcanals-          #+#    #+#             */
-/*   Updated: 2025/10/26 19:27:12 by bizcru           ###   ########.fr       */
+/*   Updated: 2025/11/06 18:59:36 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	check_arguments(char *base)
 	return (1);
 }
 
-static int	ft_putnbr_base_easy(size_t nbr, char *base, 
+static int	ft_putnbr_base_easy(size_t nbr, char *base,
 	unsigned int size, int *count)
 {
 	char		c;
@@ -67,7 +67,7 @@ static int	ft_putnbr_base_easy(size_t nbr, char *base,
 	return (++*count);
 }
 
-int	ft_putnbr_base_u(size_t  nbr, char *base)
+int	ft_putnbr_base_u(size_t nbr, char *base)
 {
 	unsigned int	size;
 	char			c;

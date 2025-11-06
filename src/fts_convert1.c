@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:27:40 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/06 17:43:15 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:01:45 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 void	ft_convert_c(t_parser *parser)
 {
 	char	*c;
-
-	//ft_putstr_fd("converting from char\n", 1);
-	//ft_putchar_fd(parser->format[0], 1);
-	//ft_putchar_fd(10, 1);
 
 	c = ft_calloc(2, 1);
 	if (!c)
@@ -32,9 +28,6 @@ void	ft_convert_s(t_parser *parser)
 	char	*str;
 	char	*rtrn;
 
-	//ft_putstr_fd("converting from string\n", 1);
-	//ft_putchar_fd(parser->format[0], 1);
-	//ft_putchar_fd(10, 1);
 	str = va_arg(*(parser->args), char *);
 	if (!str)
 		rtrn = ft_strdup("(nil)");
@@ -50,9 +43,6 @@ void	ft_convert_p(t_parser *parser)
 	void	*ptr;
 	char	*rtrn;
 
-	//ft_putstr_fd("converting from pointer\n", 1);
-	//ft_putchar_fd(parser->format[0], 1);
-	//ft_putchar_fd(10, 1);
 	ptr = va_arg(*(parser->args), void *);
 	if (!ptr)
 		rtrn = ft_strdup("(nil)");
@@ -65,8 +55,8 @@ void	ft_convert_p(t_parser *parser)
 
 static char	*my_ft_itoa(int num)
 {
-	char *atoi;
-	char *unsign;
+	char	*atoi;
+	char	*unsign;
 
 	atoi = ft_itoa(num);
 	if (!atoi)
@@ -84,9 +74,7 @@ void	ft_convert_di(t_parser *parser)
 {
 	char	*str;
 	int		num;
-	//ft_putstr_fd("converting from decimal/int\n", 1);
-	//ft_putchar_fd(parser->format[0], 1);
-	//ft_putchar_fd(10, 1);
+
 	num = va_arg(*(parser->args), int);
 	if (num < 0)
 		parser->flag_sign = 3;

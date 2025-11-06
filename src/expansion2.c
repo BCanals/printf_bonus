@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 17:50:21 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/02 21:13:07 by bizcru           ###   ########.fr       */
+/*   Updated: 2025/11/06 19:04:08 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ int	ft_expand_buff(t_parser *parser)
 	size_t	buf;
 	char	*str;
 
-
-	//ft_putstr_fd("in shroten_str. pointer = ", 1);
-	//ft_putstr_fd(ft_utoa_base((size_t) parser->wop, "0123456789abcdef"), 1);
-	//ft_putchar_fd('\n', 1);
 	if (my_ft_strlen(parser) < parser->flag_len)
 	{
 		str = ft_calloc(parser->flag_len + 1, 1);

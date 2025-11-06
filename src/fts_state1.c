@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:12:33 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/06 17:42:21 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:06:05 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,37 +65,27 @@ void	ft_forced_string(t_parser *parser)
 
 void	ft_format_flag(t_parser *parser)
 {
-	//ft_putstr_fd("\nlooking for a format flag with: ", 1);
-	//ft_putchar_fd(parser->format[0], 1);
-	//ft_putstr_fd("\n", 1);
 	if (ft_strchr("#0- +", parser->format[0]))
 	{
-		//ft_putstr_fd("taking a flag\n", 1);
-		//ft_putchar_fd(parser->format[0], 1);
-		//ft_putchar_fd(10, 1);
 		if (parser->format[0] == '#')
 			parser->flag_hash = 1;
-		else if (parser->format[0] == ' ' && !parser->flag_sign && parser->flag_sign != 3)
+		else if (parser->format[0] == ' ' && !parser->flag_sign
+			&& parser->flag_sign != 3)
 			parser->flag_sign = 1;
 		else if (parser->format[0] == '+' && parser->flag_sign != 3)
 			parser->flag_sign = 2;
-		else if (parser->format[0] ==  '0' && !parser->flag_zer_min)
+		else if (parser->format[0] == '0' && !parser->flag_zer_min)
 			parser->flag_zer_min = 1;
 		else if (parser->format[0] == '-')
 			parser->flag_zer_min = 2;
-		//ft_const_printer(parser);
 		parser->format++;
 		return ;
 	}
 	parser->state = FORMAT_F_LEN;
-	//ft_const_printer(parser);
 }
 
 void	ft_format_f_len(t_parser *parser)
 {
-	//ft_putstr_fd("\nlooking for a format length  with: ", 1);
-	//ft_putchar_fd(parser->format[0], 1);
-	//ft_putstr_fd("\n", 1);
 	if (ft_isdigit(parser->format[0]))
 	{
 		parser->flag_len = ft_atou(parser->format);
@@ -104,16 +94,13 @@ void	ft_format_f_len(t_parser *parser)
 		while (ft_isdigit(parser->format[0]))
 			parser->format++;
 	}
-	//ft_const_printer(parser);
 	parser->state = FORMAT_PRECISION;
 }
 
 void	ft_format_precision(t_parser *parser)
 {
-	//ft_putstr_fd("\nlooking for format precision\n", 1);
 	if (parser->format[0] == '.')
 	{
-		//ft_putstr_fd("precision: yes\n", 1);
 		parser->precision = 1;
 		if (parser->flag_zer_min == 1)
 			parser->flag_zer_min = 0;
@@ -127,6 +114,5 @@ void	ft_format_precision(t_parser *parser)
 				parser->format++;
 		}
 	}
-	//ft_const_printer(parser);
 	parser->state = FORMAT_CONVER;
 }

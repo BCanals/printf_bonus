@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:36:26 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/27 16:31:12 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:00:33 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_putcont(void *s)
 {
-	char *str;
+	char	*str;
 
 	str = (char *)s;
 	while (*str)

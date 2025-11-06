@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 18:02:27 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/06 18:24:35 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:07:14 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static int	ft_app_sign(t_parser *parser)
 {
 	char	*str;
 
-	if ((parser->precision && ft_strlen(parser->wop) >= parser->prec_len) ||
-	 (parser->wop)[0] != '0')
+	if ((parser->precision && ft_strlen(parser->wop) >= parser->prec_len)
+		|| (parser->wop)[0] != '0')
 	{
 		str = ft_calloc(ft_strlen(parser->wop) + 2, 1);
 		if (!str)
@@ -88,9 +88,8 @@ static int	ft_app_sign(t_parser *parser)
 
 static int	ft_shorten_str(t_parser *parser)
 {
-	char *str;
+	char	*str;
 
-	//ft_putstr_fd("in shroten_str\n", 1);
 	if (parser->prec_len < ft_strlen(parser->wop))
 	{
 		str = ft_strdup_n(parser->wop, parser->prec_len);
@@ -99,7 +98,6 @@ static int	ft_shorten_str(t_parser *parser)
 		free(parser->wop);
 		parser->wop = str;
 	}
-	//ft_putstr_fd(parser->wop, 1);
 	return (1);
 }
 

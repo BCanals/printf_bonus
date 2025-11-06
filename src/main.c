@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:43:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/06 17:41:19 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:06:20 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	debuger(t_parser *parser)
 
 void	ft_const_printer(t_parser *parser)
 {
-	char *str;
+	char	*str;
 
 	ft_putstr_fd("flag conv: ", 1);
 	ft_putchar_fd(parser->flag_converter, 1);
