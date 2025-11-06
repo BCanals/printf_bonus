@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:12:43 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/30 19:12:46 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/03 09:46:49 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_parser
 	enum e_state	state;
 	void			(*(*stt_fts_array))(struct s_parser *);
 	void			(*(*cvt_fts_array))(struct s_parser *);
+	char			is_neg;
 	char			flag_converter;
 	char			flag_hash;
 	char			flag_spc_pls;

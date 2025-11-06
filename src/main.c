@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:43:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/30 19:16:21 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:17:47 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int	ft_printf(const char *format, ...)
 		(parser->stt_fts_array)[parser->state](parser);
 	if (parser->kill)
 		return (ft_clean_up(parser), -1);
-	ft_putstr_fd("\n++++++++++PARSING FINISHED!+++++++++\n", 1);
 	ft_putlst(parser->output);
 	ft_clean_up(parser);
 	return (1);

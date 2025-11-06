@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 18:02:27 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/30 19:20:07 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/02 22:17:26 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	ft_app_zeros(t_parser *parser)
 		free(parser->wop);
 		parser->wop = str;
 	}
-	ft_putstr_fd(parser->wop, 1);
 	return (1);
 }
 
@@ -61,7 +60,7 @@ static int	ft_app_hash(t_parser *parser)
 	}
 	(parser->wop)[0] = '0';
 	(parser->wop)[1] = 'x';
-	ft_putstr_fd(parser->wop, 1);
+	//ft_putstr_fd(parser->wop, 1);
 	return (1);
 }
 
@@ -82,7 +81,7 @@ static int	ft_app_spc_pls(t_parser *parser)
 		(parser->wop)[0] = ' ';
 	else
 		(parser->wop)[0] = '+';
-	ft_putstr_fd(parser->wop, 1);
+	//ft_putstr_fd(parser->wop, 1);
 	return (1);
 }
 
@@ -90,6 +89,7 @@ static int	ft_shorten_str(t_parser *parser)
 {
 	char *str;
 
+	//ft_putstr_fd("in shroten_str\n", 1);
 	if (parser->prec_len < ft_strlen(parser->wop))
 	{
 		str = ft_strdup_n(parser->wop, parser->prec_len);
@@ -98,7 +98,7 @@ static int	ft_shorten_str(t_parser *parser)
 		free(parser->wop);
 		parser->wop = str;
 	}
-	ft_putstr_fd(parser->wop, 1);
+	//ft_putstr_fd(parser->wop, 1);
 	return (1);
 }
 
