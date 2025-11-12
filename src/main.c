@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:43:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/06 19:06:20 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:08:36 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,42 +38,28 @@ static void	ft_clean_up(t_parser *parser)
 	}
 }
 
-void	debuger(t_parser *parser)
+static int	ft_put_and_getrtrn(t_parser *parser)
 {
-	ft_putstr_fd("====>>> now at: ", 1);
-	ft_putchar_fd(parser->format[0], 1);
-	ft_putchar_fd(10, 1);
-	(parser->stt_fts_array)[parser->state](parser);
-}
+	int		rtrn;
+	t_list	*list;
 
-void	ft_const_printer(t_parser *parser)
-{
-	char	*str;
-
-	ft_putstr_fd("flag conv: ", 1);
-	ft_putchar_fd(parser->flag_converter, 1);
-	ft_putstr_fd("\nflag hash: ", 1);
-	ft_putchar_fd(parser->flag_hash + '0', 1);
-	ft_putstr_fd("\nflag sign: ", 1);
-	ft_putchar_fd(parser->flag_sign + '0', 1);
-	ft_putstr_fd("\nflag zer_min: ", 1);
-	ft_putchar_fd(parser->flag_zer_min + '0', 1);
-	ft_putstr_fd("\nflag len: ", 1);
-	str = ft_itoa(parser->flag_len);
-	ft_putstr_fd(str, 1);
-	free(str);
-	ft_putstr_fd("\nprecision: ", 1);
-	ft_putchar_fd(parser->precision + '0', 1);
-	ft_putstr_fd("\nprec len: ", 1);
-	str = ft_itoa(parser->prec_len);
-	ft_putstr_fd(str, 1);
-	free(str);
+	rtrn = 0;
+	list = parser->output;
+	while (list)
+	{
+		ft_putstr_fd(list->content, 1);
+		rtrn += ft_strlen(list->content);
+		list = list->next;
+	}
+	rtrn += parser->add_return;
+	return (rtrn);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	t_parser	*parser;
 	va_list		args;
+	int			rtrn;
 
 	va_start(args, format);
 	parser = parser_constr(format, &args);
@@ -83,7 +69,7 @@ int	ft_printf(const char *format, ...)
 		(parser->stt_fts_array)[parser->state](parser);
 	if (parser->kill)
 		return (ft_clean_up(parser), -1);
-	ft_putlst(parser->output);
+	rtrn = ft_put_and_getrtrn(parser);
 	ft_clean_up(parser);
-	return (1);
+	return (rtrn);
 }

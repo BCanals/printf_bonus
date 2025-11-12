@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:27:40 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/06 19:01:45 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:08:21 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_convert_c(t_parser *parser)
 		return (parser->kill = 1, (void)0);
 	c[0] = va_arg(*(parser->args), int);
 	parser->wop = c;
+	if (c[0] == 0)
+		(parser->add_return)++;
 }
 
 void	ft_convert_s(t_parser *parser)

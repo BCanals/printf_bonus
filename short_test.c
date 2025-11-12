@@ -3,6 +3,8 @@
 
 int main(void)
 {
+	
+	//close(1);
 	//printf("%u", 2 * 2147483647 + 2);
-	ft_printf("%s", 'c');
+	printf("%uhello        ", "jo");
 }

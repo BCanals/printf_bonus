@@ -6,7 +6,7 @@
 #    By: becanals <becanals@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 14:27:49 by becanals          #+#    #+#              #
-#    Updated: 2025/10/30 16:20:07 by becanals         ###   ########.fr        #
+#    Updated: 2025/11/12 18:11:19 by becanals         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 test: $(NAME) test.c
-	$(CC) -g -fsanitize=address test.c -L. $(NAME) libft.a -o test
+	$(CC) -g -fsanitize=address test.c -L. $(NAME) -o test
 
 clean:
 	make clean -C $(LIBFT_DIR)
