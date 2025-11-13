@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:27:40 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/12 20:47:04 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:08:21 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,32 @@ void	ft_convert_p(t_parser *parser)
 	parser->wop = rtrn;
 }
 
+static char	*my_ft_itoa(int num)
+{
+	char	*atoi;
+	char	*unsign;
+
+	atoi = ft_itoa(num);
+	if (!atoi)
+		return (NULL);
+	if (num >= 0)
+		return (atoi);
+	unsign = ft_strdup(&atoi[1]);
+	free(atoi);
+	if (!unsign)
+		return (NULL);
+	return (unsign);
+}
+
 void	ft_convert_di(t_parser *parser)
 {
 	char	*str;
 	int		num;
 
 	num = va_arg(*(parser->args), int);
-	str = ft_itoa(num);
+	if (num < 0)
+		parser->flag_sign = 3;
+	str = my_ft_itoa(num);
 	if (!str)
 		return (parser->kill = 1, (void)0);
 	parser->wop = str;

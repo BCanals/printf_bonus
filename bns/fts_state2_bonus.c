@@ -1,0 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fts_state2_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/16 17:16:25 by becanals          #+#    #+#             */
+/*   Updated: 2025/11/06 19:07:42 by becanals         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/ft_printf.h"
+
+static void	ft_reset_flags(t_parser *parser)
+{
+	parser->flag_converter = 0;
+	parser->flag_hash = 0;
+	parser->flag_sign = 0;
+	parser->flag_zer_min = 0;
+	parser->flag_len = 0;
+	parser->precision = 0;
+	parser->prec_len = 0;
+	parser->wop = NULL;
+}
+
+void	ft_format_conver(t_parser *parser)
+{
+	t_list	*new;
+
+	if (!ft_memchr("cspdiuxX", parser->format[0], 8))
+	{
+		ft_reset_flags(parser);
+		parser->state = FORCED_STRING;
+		return ;
+	}
+	parser->cvt_fts_array[ft_memchr_pos("cspdiuxX%", parser->format[0], 9)]
+		(parser);
+	parser->flag_converter = parser->format[0];
+	if (!ft_expansion(parser))
+		return (parser->kill = 1, (void)0);
+	new = ft_lstnew(parser->wop);
+	if (!new)
+		return (parser->kill = 1, (void)0);
+	ft_lstadd_back(&(parser->output), new);
+	ft_reset_flags(parser);
+	parser->state = NEW_STRING;
+	(parser->format)++;
+}

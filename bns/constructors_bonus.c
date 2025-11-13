@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:01:10 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/12 21:00:08 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:05:16 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ static void	stt_fts_constr(void (*(*array))(t_parser *))
 {
 	array[1] = &ft_new_string;
 	array[2] = &ft_forced_string;
+	array[3] = &ft_format_flag;
+	array[4] = &ft_format_f_len;
+	array[5] = &ft_format_precision;
 	array[6] = &ft_format_conver;
 }
 
