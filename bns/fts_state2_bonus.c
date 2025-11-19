@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:16:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/06 19:07:42 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:32:18 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ void	ft_format_conver(t_parser *parser)
 	if (!ft_expansion(parser))
 		return (parser->kill = 1, (void)0);
 	new = ft_lstnew(parser->wop);
+	if (parser->wop[0] == 0 && parser->format[0] == 'c')
+	{
+		new = ft_lstlast(parser->output);
+		new->c_flag = 1;
+	}
 	if (!new)
 		return (parser->kill = 1, (void)0);
 	ft_lstadd_back(&(parser->output), new);
