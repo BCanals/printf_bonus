@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fts_state1.c                                       :+:      :+:    :+:   */
+/*   fts_state.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:12:33 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/12 21:26:24 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/18 21:13:55 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
-
-static void	ft_reset_flags(t_parser *parser)
-{
-	parser->flag_converter = 0;
-	parser->wop = NULL;
-}
 
 void	ft_format_conver(t_parser *parser)
 {
@@ -24,18 +18,22 @@ void	ft_format_conver(t_parser *parser)
 
 	if (!ft_memchr("cspdiuxX", parser->format[0], 8))
 	{
-		ft_reset_flags(parser);
+		parser->wop = NULL;
 		parser->state = FORCED_STRING;
 		return ;
 	}
 	parser->cvt_fts_array[ft_memchr_pos("cspdiuxX%", parser->format[0], 9)]
 		(parser);
-	parser->flag_converter = parser->format[0];
 	new = ft_lstnew(parser->wop);
 	if (!new)
 		return (parser->kill = 1, (void)0);
 	ft_lstadd_back(&(parser->output), new);
-	ft_reset_flags(parser);
+	if (parser->wop[0] == 0 && parser->format[0] == 'c')
+	{
+		new = ft_lstlast(parser->output);
+		new->c_flag = 1;
+	}
+	parser->wop = NULL;
 	parser->state = NEW_STRING;
 	(parser->format)++;
 }

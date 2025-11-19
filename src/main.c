@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:43:25 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/12 20:41:46 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:11:05 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	ft_put_and_getrtrn(t_parser *parser)
 	while (list)
 	{
 		ft_putstr_fd(list->content, 1);
+		if (list->c_flag == 1)
+			write(1, "\0", 1);
 		rtrn += ft_strlen(list->content);
 		list = list->next;
 	}

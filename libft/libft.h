@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 09:36:24 by becanals          #+#    #+#             */
-/*   Updated: 2025/10/30 19:32:47 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/18 21:03:06 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_list
 {
 	void			*content;
+	int				c_flag;
 	struct s_list	*next;
 }				t_list;
 

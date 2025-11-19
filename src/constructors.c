@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:01:10 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/12 21:00:08 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:11:42 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_parser	*parser_constr(const char *format, va_list *args)
 {
 	t_parser	*parser;
 
+	if (!format)
+		return (NULL);
 	parser = ft_calloc(sizeof(t_parser), 1);
 	if (!parser)
 		return (NULL);

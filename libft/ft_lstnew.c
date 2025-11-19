@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:30:29 by becanals          #+#    #+#             */
-/*   Updated: 2025/09/30 18:28:46 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/18 21:18:09 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(void *content)
 	if (!ret)
 		return (NULL);
 	ret->content = content;
+	ret->c_flag = 0;
 	ret->next = NULL;
 	return (ret);
 }

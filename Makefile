@@ -6,7 +6,7 @@
 #    By: becanals <becanals@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 14:27:49 by becanals          #+#    #+#              #
-#    Updated: 2025/11/13 15:45:45 by becanals         ###   ########.fr        #
+#    Updated: 2025/11/19 18:13:34 by becanals         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ $(BUILD_DIR_BNS)/%.o: $(SRC_DIR_BNS)/%.c $(INC) Makefile | $(BUILD_DIR_BNS)
 $(BUILD_DIR_BNS):
 	mkdir -p $(BUILD_DIR_BNS)
 
-bonus: $(OBJS_BNS) $(LIBFT) $(INC) Makefile
+bonus: $(OBJS_BNS) $(LIBFT) $(INC) Makefile 
 	cp $(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(OBJS_BNS)
 	ranlib $(NAME)

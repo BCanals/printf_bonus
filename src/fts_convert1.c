@@ -6,7 +6,7 @@
 /*   By: becanals <becanals@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:27:40 by becanals          #+#    #+#             */
-/*   Updated: 2025/11/12 20:47:04 by becanals         ###   ########.fr       */
+/*   Updated: 2025/11/18 20:58:16 by becanals         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_convert_s(t_parser *parser)
 
 	str = va_arg(*(parser->args), char *);
 	if (!str)
-		rtrn = ft_strdup("(nil)");
+		rtrn = ft_strdup("(null)");
 	else
 		rtrn = ft_strdup(str);
 	if (!rtrn)
